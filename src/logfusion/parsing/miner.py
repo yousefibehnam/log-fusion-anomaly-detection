@@ -6,6 +6,10 @@ Similarity is the fraction of positions where the template has the same token or
 wildcard. A message joins the most similar template if that fraction reaches
 ``threshold``; positions that disagree become wildcards. Otherwise it starts a new
 template. Template ids never change, even when a template gains wildcards.
+
+Messages that are identical after masking are cached and always go to the template
+the first copy went to. Templates only ever gain wildcards, so that template still
+matches them; the cache makes long logs (millions of lines) fast to process.
 """
 
 from __future__ import annotations
@@ -38,6 +42,7 @@ class TemplateMiner:
     masks: tuple[Mask, ...] = DEFAULT_MASKS
     templates: list[Template] = field(default_factory=list)
     _buckets: dict[tuple[int, str], list[Template]] = field(default_factory=dict, repr=False)
+    _cache: dict[str, Template] = field(default_factory=dict, repr=False)
 
     def __post_init__(self) -> None:
         if not 0.0 < self.threshold <= 1.0:
@@ -45,7 +50,12 @@ class TemplateMiner:
 
     def add(self, message: str) -> Template:
         """Assign ``message`` to a template, creating or generalising one if needed."""
-        tokens = tokenize(mask(message, self.masks))
+        masked = mask(message, self.masks)
+        cached = self._cache.get(masked)
+        if cached is not None:
+            cached.count += 1
+            return cached
+        tokens = tokenize(masked)
         bucket = self._buckets.setdefault(self._key(tokens), [])
         best, best_sim = self._best_match(bucket, tokens)
         if best is not None and best_sim >= self.threshold:
@@ -57,6 +67,7 @@ class TemplateMiner:
             self.templates.append(best)
             bucket.append(best)
         best.count += 1
+        self._cache[masked] = best
         return best
 
     def match(self, message: str) -> Template | None:
