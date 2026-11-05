@@ -86,6 +86,7 @@ class GeneratorConfig:
     windows: int = 720
     window_seconds: int = 60
     requests_per_window: float = 30.0
+    load_period: int = 120  # windows per load cycle; the fault-free prefix spans whole cycles
     normal_fraction: float = 0.3
     faults: int = 10
     min_duration: int = 5
@@ -162,7 +163,7 @@ class Generator:
         for w in range(c.windows):
             active = [f for f in faults if f.active(w)]
             window_start = NOMINAL_START + timedelta(seconds=w * c.window_seconds)
-            load = c.requests_per_window * (1.0 + 0.3 * np.sin(2 * np.pi * w / c.windows))
+            load = c.requests_per_window * (1.0 + 0.3 * np.sin(2 * np.pi * w / c.load_period))
             calls = {name: 0 for name in self.topology.names}
 
             for _ in range(int(self.rng.poisson(load))):
