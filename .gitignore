@@ -9,7 +9,7 @@ build/
 dist/
 
 # Downloaded datasets and generated working data (never committed)
-data/
+/data/
 
 # OS / IDE
 .DS_Store
