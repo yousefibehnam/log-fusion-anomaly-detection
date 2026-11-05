@@ -4,7 +4,13 @@
   measured on the 2,000 lines that Loghub labelled by hand (``HDFS_2k``).
 * Detection: blocks are ordered by their first log line and split in half. Detectors
   are fitted on the first half **without labels** (unsupervised, as in Xu et al. 2009)
-  and evaluated against the real block labels on the second half.
+  and evaluated against the real block labels on the second half. This is the main,
+  pre-declared protocol (PCA keeps components explaining 95% of the variance).
+* Protocol study: PCA is also run (a) with 90% and 99% variance, (b) fitted and evaluated
+  on all blocks, the protocol of earlier HDFS studies, and (c) semi-supervised, fitted only
+  on training blocks labelled normal. Each is run on this project's templates and on the
+  29 reference events shipped with HDFS_v1 (``Event_occurrence_matrix.csv``), so the
+  effect of the parser can be separated from the effect of the protocol.
 """
 
 from __future__ import annotations
@@ -105,10 +111,54 @@ def run(data_dir: Path, out_dir: Path, sample_csv: Path | None = None, log=print
             f"f1={entry['f1']:.3f}"
         )
 
+    result["protocols"] = protocol_study(x, y, split, reference_matrix(data_dir, events.blocks))
     result["templates"] = events.templates
     (out_dir / "hdfs_results.json").write_text(json.dumps(result, indent=2) + "\n")
     (out_dir / "hdfs_results.md").write_text(render_markdown(result))
     return result
+
+
+def reference_matrix(data_dir: Path, blocks: list[str]) -> np.ndarray | None:
+    """Loghub's per-block counts of the 29 reference events, in ``blocks`` order."""
+    path = data_dir / "preprocessed" / "Event_occurrence_matrix.csv"
+    if not path.exists():
+        return None
+    with path.open(newline="") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        first_event = header.index("E1")
+        rows = {r[0]: [float(v) for v in r[first_event:]] for r in reader}
+    return np.array([rows[b] for b in blocks])
+
+
+def protocol_study(x: np.ndarray, y: np.ndarray, split: int, reference: np.ndarray | None) -> list:
+    feature_sets = {"this parser": x}
+    if reference is not None:
+        feature_sets["Loghub reference events"] = reference
+    train, test = slice(0, split), slice(split, None)
+    normal_train = np.flatnonzero(y[train] == 0)
+    rows = []
+    for variance in (0.90, 0.95, 0.99):
+        rows.append((f"Unsupervised, temporal split, {variance:.0%} variance", variance, "split"))
+    rows.append(("Unsupervised, fit and evaluate on all blocks, 95% variance", 0.95, "all"))
+    rows.append(("Semi-supervised (normal training blocks only), 95% variance", 0.95, "normal"))
+    study = []
+    for label, variance, protocol in rows:
+        entry: dict = {"protocol": label}
+        for name, features in feature_sets.items():
+            detector = PCADetector(variance=variance)
+            if protocol == "all":
+                detector.fit(features)
+                d = detection(y, detector.predict(features))
+            else:
+                fit_rows = (
+                    features[train][normal_train] if protocol == "normal" else features[train]
+                )
+                detector.fit(fit_rows)
+                d = detection(y[test], detector.predict(features[test]))
+            entry[name] = {**d.as_dict(), "components": detector.n_components_}
+        study.append(entry)
+    return study
 
 
 def roc_auc(y_true: np.ndarray, scores: np.ndarray) -> float:
@@ -172,4 +222,26 @@ def render_markdown(result: dict) -> str:
             f"| {name} | {d['precision']:.3f} | {d['recall']:.3f} | {d['f1']:.3f} | "
             f"{d['auc']:.3f} | {d['tp']:,} | {d['fp']:,} | {d['fn']:,} |"
         )
+    study = result.get("protocols", [])
+    if study:
+        names = [k for k in study[0] if k != "protocol"]
+        lines += [
+            "",
+            "## PCA protocol study",
+            "",
+            "Precision / recall / F1 (k = number of principal components kept). The first group "
+            'of rows uses the same split as above; "all blocks" fits and evaluates on every '
+            "block, as earlier HDFS studies did; the semi-supervised row uses the training labels "
+            "to drop anomalous blocks before fitting.",
+            "",
+            "| Protocol | " + " | ".join(names) + " |",
+            "|---|" + "---:|" * len(names),
+        ]
+        for row in study:
+            cells = [
+                f"{row[n]['precision']:.3f} / {row[n]['recall']:.3f} / **{row[n]['f1']:.3f}** "
+                f"(k={row[n]['components']})"
+                for n in names
+            ]
+            lines.append(f"| {row['protocol']} | " + " | ".join(cells) + " |")
     return "\n".join(lines) + "\n"
