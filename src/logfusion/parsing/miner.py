@@ -7,6 +7,11 @@ wildcard. A message joins the most similar template if that fraction reaches
 ``threshold``; positions that disagree become wildcards. Otherwise it starts a new
 template. Template ids never change, even when a template gains wildcards.
 
+Two different plain words at the same position (for example ``terminating`` and
+``Interrupted.``) usually mean two different events rather than a variable, so a message
+only joins a template if every disagreeing position involves a token that looks like a
+variable: a placeholder, an existing wildcard, or a token with a digit or a ``/``.
+
 Messages that are identical after masking are cached and always go to the template
 the first copy went to. Templates only ever gain wildcards, so that template still
 matches them; the cache makes long logs (millions of lines) fast to process.
@@ -83,11 +88,26 @@ class TemplateMiner:
         return len(tokens), first if constant else WILDCARD
 
     @staticmethod
-    def _best_match(bucket: list[Template], tokens: list[str]) -> tuple[Template | None, float]:
+    def _looks_variable(token: str) -> bool:
+        return token.startswith("<") or "/" in token or any(c.isdigit() for c in token)
+
+    @classmethod
+    def _compatible(cls, template: list[str], tokens: list[str]) -> bool:
+        return all(
+            t in (m, WILDCARD) or cls._looks_variable(t) or cls._looks_variable(m)
+            for t, m in zip(template, tokens, strict=True)
+        )
+
+    @classmethod
+    def _best_match(
+        cls, bucket: list[Template], tokens: list[str]
+    ) -> tuple[Template | None, float]:
         if not tokens:
             return (bucket[0], 1.0) if bucket else (None, 0.0)
         best, best_sim = None, -1.0
         for template in bucket:
+            if not cls._compatible(template.tokens, tokens):
+                continue
             same = sum(
                 1 for t, m in zip(template.tokens, tokens, strict=True) if t in (m, WILDCARD)
             )

@@ -49,13 +49,21 @@ def test_different_lengths_or_first_words_never_merge():
 
 def test_threshold_controls_merging():
     strict = TemplateMiner(threshold=1.0)
-    strict.add("user alice logged in")
-    strict.add("user bob logged in")
+    strict.add("session s1 logged in")
+    strict.add("session s2 logged in")
     assert len(strict.templates) == 2
     loose = TemplateMiner(threshold=0.7)
-    loose.add("user alice logged in")
-    loose.add("user bob logged in")
+    loose.add("session s1 logged in")
+    loose.add("session s2 logged in")
     assert len(loose.templates) == 1
+
+
+def test_different_plain_words_are_different_events():
+    miner = TemplateMiner()
+    done = miner.add("PacketResponder 1 for block blk_1 terminating")
+    interrupted = miner.add("PacketResponder 2 for block blk_2 Interrupted.")
+    assert done is not interrupted
+    assert miner.add("user alice logged in") is not miner.add("user bob logged in")
 
 
 def test_match_does_not_learn():
