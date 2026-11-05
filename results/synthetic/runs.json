@@ -1,0 +1,2104 @@
+[
+  {
+    "seed": 1,
+    "detection": {
+      "traces": {
+        "tp": 52,
+        "fp": 0,
+        "fn": 51,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.5048543689320388,
+        "f1": 0.6709677419354839
+      },
+      "logs": {
+        "tp": 34,
+        "fp": 1,
+        "fn": 69,
+        "tn": 400,
+        "precision": 0.9714285714285714,
+        "recall": 0.3300970873786408,
+        "f1": 0.4927536231884058
+      },
+      "metrics": {
+        "tp": 56,
+        "fp": 0,
+        "fn": 47,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.5436893203883495,
+        "f1": 0.7044025157232704
+      },
+      "traces+logs": {
+        "tp": 54,
+        "fp": 1,
+        "fn": 49,
+        "tn": 400,
+        "precision": 0.9818181818181818,
+        "recall": 0.5242718446601942,
+        "f1": 0.6835443037974684
+      },
+      "traces+metrics": {
+        "tp": 84,
+        "fp": 0,
+        "fn": 19,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.8155339805825242,
+        "f1": 0.8983957219251336
+      },
+      "logs+metrics": {
+        "tp": 83,
+        "fp": 1,
+        "fn": 20,
+        "tn": 400,
+        "precision": 0.9880952380952381,
+        "recall": 0.8058252427184466,
+        "f1": 0.8877005347593583
+      },
+      "traces+logs+metrics": {
+        "tp": 86,
+        "fp": 1,
+        "fn": 17,
+        "tn": 400,
+        "precision": 0.9885057471264368,
+        "recall": 0.8349514563106796,
+        "f1": 0.9052631578947368
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.8275862068965517,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.10526315789473684
+      },
+      "logs": {
+        "cpu": 0.2413793103448276,
+        "memory": 0.0,
+        "latency": 0.8846153846153846,
+        "error": 0.21052631578947367
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9310344827586207,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 0.8275862068965517,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.21052631578947367
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9310344827586207,
+        "latency": 1.0,
+        "error": 0.10526315789473684
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9310344827586207,
+        "latency": 0.8846153846153846,
+        "error": 0.21052631578947367
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9310344827586207,
+        "latency": 1.0,
+        "error": 0.21052631578947367
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "cpu",
+        "root": "shipping",
+        "windows": 10,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "catalog",
+        "windows": 5,
+        "detected_windows": 4,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "cart",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "checkout",
+        "windows": 14,
+        "detected_windows": 0
+      },
+      {
+        "kind": "latency",
+        "root": "cart",
+        "windows": 14,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "payment",
+        "windows": 12,
+        "detected_windows": 12,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cache",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "payment",
+        "windows": 14,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "payment",
+        "windows": 8,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "cart",
+        "windows": 6,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 30
+  },
+  {
+    "seed": 2,
+    "detection": {
+      "traces": {
+        "tp": 28,
+        "fp": 0,
+        "fn": 68,
+        "tn": 408,
+        "precision": 1.0,
+        "recall": 0.2916666666666667,
+        "f1": 0.45161290322580644
+      },
+      "logs": {
+        "tp": 18,
+        "fp": 3,
+        "fn": 78,
+        "tn": 405,
+        "precision": 0.8571428571428571,
+        "recall": 0.1875,
+        "f1": 0.30769230769230765
+      },
+      "metrics": {
+        "tp": 59,
+        "fp": 6,
+        "fn": 37,
+        "tn": 402,
+        "precision": 0.9076923076923077,
+        "recall": 0.6145833333333334,
+        "f1": 0.7329192546583851
+      },
+      "traces+logs": {
+        "tp": 28,
+        "fp": 3,
+        "fn": 68,
+        "tn": 405,
+        "precision": 0.9032258064516129,
+        "recall": 0.2916666666666667,
+        "f1": 0.4409448818897638
+      },
+      "traces+metrics": {
+        "tp": 77,
+        "fp": 6,
+        "fn": 19,
+        "tn": 402,
+        "precision": 0.927710843373494,
+        "recall": 0.8020833333333334,
+        "f1": 0.8603351955307261
+      },
+      "logs+metrics": {
+        "tp": 76,
+        "fp": 9,
+        "fn": 20,
+        "tn": 399,
+        "precision": 0.8941176470588236,
+        "recall": 0.7916666666666666,
+        "f1": 0.839779005524862
+      },
+      "traces+logs+metrics": {
+        "tp": 77,
+        "fp": 9,
+        "fn": 19,
+        "tn": 399,
+        "precision": 0.8953488372093024,
+        "recall": 0.8020833333333334,
+        "f1": 0.8461538461538463
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.2903225806451613,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.05263157894736842
+      },
+      "logs": {
+        "cpu": 0.0,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.0
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9642857142857143,
+        "latency": 0.05555555555555555,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 0.2903225806451613,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.05263157894736842
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9642857142857143,
+        "latency": 1.0,
+        "error": 0.05263157894736842
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9642857142857143,
+        "latency": 1.0,
+        "error": 0.0
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9642857142857143,
+        "latency": 1.0,
+        "error": 0.05263157894736842
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "auth",
+        "windows": 7,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "cache",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "checkout",
+        "windows": 6,
+        "detected_windows": 0
+      },
+      {
+        "kind": "error",
+        "root": "shipping",
+        "windows": 13,
+        "detected_windows": 1,
+        "rank_score": 7,
+        "rank_walk": 9
+      },
+      {
+        "kind": "cpu",
+        "root": "cache",
+        "windows": 7,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cart",
+        "windows": 11,
+        "detected_windows": 11,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "cart",
+        "windows": 12,
+        "detected_windows": 12,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "catalog",
+        "windows": 7,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "shipping",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "checkout",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 30
+  },
+  {
+    "seed": 3,
+    "detection": {
+      "traces": {
+        "tp": 55,
+        "fp": 10,
+        "fn": 32,
+        "tn": 407,
+        "precision": 0.8461538461538461,
+        "recall": 0.632183908045977,
+        "f1": 0.7236842105263158
+      },
+      "logs": {
+        "tp": 35,
+        "fp": 3,
+        "fn": 52,
+        "tn": 414,
+        "precision": 0.9210526315789473,
+        "recall": 0.40229885057471265,
+        "f1": 0.5599999999999999
+      },
+      "metrics": {
+        "tp": 45,
+        "fp": 9,
+        "fn": 42,
+        "tn": 408,
+        "precision": 0.8333333333333334,
+        "recall": 0.5172413793103449,
+        "f1": 0.6382978723404256
+      },
+      "traces+logs": {
+        "tp": 55,
+        "fp": 13,
+        "fn": 32,
+        "tn": 404,
+        "precision": 0.8088235294117647,
+        "recall": 0.632183908045977,
+        "f1": 0.7096774193548387
+      },
+      "traces+metrics": {
+        "tp": 73,
+        "fp": 18,
+        "fn": 14,
+        "tn": 399,
+        "precision": 0.8021978021978022,
+        "recall": 0.8390804597701149,
+        "f1": 0.8202247191011236
+      },
+      "logs+metrics": {
+        "tp": 72,
+        "fp": 12,
+        "fn": 15,
+        "tn": 405,
+        "precision": 0.8571428571428571,
+        "recall": 0.8275862068965517,
+        "f1": 0.8421052631578947
+      },
+      "traces+logs+metrics": {
+        "tp": 73,
+        "fp": 21,
+        "fn": 14,
+        "tn": 396,
+        "precision": 0.776595744680851,
+        "recall": 0.8390804597701149,
+        "f1": 0.8066298342541435
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 1.0,
+        "memory": 0.05263157894736842,
+        "latency": 1.0,
+        "error": 0.44
+      },
+      "logs": {
+        "cpu": 0.2962962962962963,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.44
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9473684210526315,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 1.0,
+        "memory": 0.05263157894736842,
+        "latency": 1.0,
+        "error": 0.44
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 1.0,
+        "latency": 1.0,
+        "error": 0.44
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9473684210526315,
+        "latency": 1.0,
+        "error": 0.44
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 1.0,
+        "latency": 1.0,
+        "error": 0.44
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "catalog",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cache",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "auth",
+        "windows": 11,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "checkout",
+        "windows": 8,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cart",
+        "windows": 10,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "shipping",
+        "windows": 12,
+        "detected_windows": 12,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "payment",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "payment",
+        "windows": 14,
+        "detected_windows": 1,
+        "rank_score": 2,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "inventory",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "shipping",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 33
+  },
+  {
+    "seed": 4,
+    "detection": {
+      "traces": {
+        "tp": 46,
+        "fp": 1,
+        "fn": 61,
+        "tn": 396,
+        "precision": 0.9787234042553191,
+        "recall": 0.42990654205607476,
+        "f1": 0.5974025974025974
+      },
+      "logs": {
+        "tp": 35,
+        "fp": 1,
+        "fn": 72,
+        "tn": 396,
+        "precision": 0.9722222222222222,
+        "recall": 0.32710280373831774,
+        "f1": 0.4895104895104895
+      },
+      "metrics": {
+        "tp": 63,
+        "fp": 8,
+        "fn": 44,
+        "tn": 389,
+        "precision": 0.8873239436619719,
+        "recall": 0.5887850467289719,
+        "f1": 0.7078651685393258
+      },
+      "traces+logs": {
+        "tp": 48,
+        "fp": 2,
+        "fn": 59,
+        "tn": 395,
+        "precision": 0.96,
+        "recall": 0.4485981308411215,
+        "f1": 0.6114649681528662
+      },
+      "traces+metrics": {
+        "tp": 95,
+        "fp": 9,
+        "fn": 12,
+        "tn": 388,
+        "precision": 0.9134615384615384,
+        "recall": 0.8878504672897196,
+        "f1": 0.9004739336492891
+      },
+      "logs+metrics": {
+        "tp": 94,
+        "fp": 9,
+        "fn": 13,
+        "tn": 388,
+        "precision": 0.912621359223301,
+        "recall": 0.8785046728971962,
+        "f1": 0.8952380952380954
+      },
+      "traces+logs+metrics": {
+        "tp": 97,
+        "fp": 10,
+        "fn": 10,
+        "tn": 387,
+        "precision": 0.9065420560747663,
+        "recall": 0.9065420560747663,
+        "f1": 0.9065420560747663
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.6363636363636364,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.56
+      },
+      "logs": {
+        "cpu": 0.18181818181818182,
+        "memory": 0.0,
+        "latency": 0.8333333333333334,
+        "error": 0.64
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9761904761904762,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 0.6363636363636364,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.64
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9761904761904762,
+        "latency": 1.0,
+        "error": 0.56
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9761904761904762,
+        "latency": 0.8333333333333334,
+        "error": 0.64
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9761904761904762,
+        "latency": 1.0,
+        "error": 0.64
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "cache",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "db",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "payment",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "checkout",
+        "windows": 8,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "inventory",
+        "windows": 13,
+        "detected_windows": 13,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "cache",
+        "windows": 12,
+        "detected_windows": 12,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "checkout",
+        "windows": 10,
+        "detected_windows": 1,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "payment",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "catalog",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "db",
+        "windows": 15,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 35
+  },
+  {
+    "seed": 5,
+    "detection": {
+      "traces": {
+        "tp": 66,
+        "fp": 3,
+        "fn": 30,
+        "tn": 405,
+        "precision": 0.9565217391304348,
+        "recall": 0.6875,
+        "f1": 0.8
+      },
+      "logs": {
+        "tp": 27,
+        "fp": 2,
+        "fn": 69,
+        "tn": 406,
+        "precision": 0.9310344827586207,
+        "recall": 0.28125,
+        "f1": 0.432
+      },
+      "metrics": {
+        "tp": 60,
+        "fp": 4,
+        "fn": 36,
+        "tn": 404,
+        "precision": 0.9375,
+        "recall": 0.625,
+        "f1": 0.75
+      },
+      "traces+logs": {
+        "tp": 66,
+        "fp": 5,
+        "fn": 30,
+        "tn": 403,
+        "precision": 0.9295774647887324,
+        "recall": 0.6875,
+        "f1": 0.7904191616766466
+      },
+      "traces+metrics": {
+        "tp": 88,
+        "fp": 7,
+        "fn": 8,
+        "tn": 401,
+        "precision": 0.9263157894736842,
+        "recall": 0.9166666666666666,
+        "f1": 0.9214659685863874
+      },
+      "logs+metrics": {
+        "tp": 87,
+        "fp": 5,
+        "fn": 9,
+        "tn": 403,
+        "precision": 0.9456521739130435,
+        "recall": 0.90625,
+        "f1": 0.9255319148936171
+      },
+      "traces+logs+metrics": {
+        "tp": 88,
+        "fp": 8,
+        "fn": 8,
+        "tn": 400,
+        "precision": 0.9166666666666666,
+        "recall": 0.9166666666666666,
+        "f1": 0.9166666666666666
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 1.0,
+        "memory": 0.04,
+        "latency": 1.0,
+        "error": 0.5384615384615384
+      },
+      "logs": {
+        "cpu": 0.0,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.46153846153846156
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.92,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 1.0,
+        "memory": 0.04,
+        "latency": 1.0,
+        "error": 0.5384615384615384
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.92,
+        "latency": 1.0,
+        "error": 0.5384615384615384
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.92,
+        "latency": 1.0,
+        "error": 0.46153846153846156
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.92,
+        "latency": 1.0,
+        "error": 0.5384615384615384
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "cpu",
+        "root": "auth",
+        "windows": 13,
+        "detected_windows": 13,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "payment",
+        "windows": 10,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "db",
+        "windows": 8,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "checkout",
+        "windows": 8,
+        "detected_windows": 2,
+        "rank_score": 2,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "catalog",
+        "windows": 9,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "auth",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "catalog",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cart",
+        "windows": 13,
+        "detected_windows": 13,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cart",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "db",
+        "windows": 6,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 34
+  },
+  {
+    "seed": 6,
+    "detection": {
+      "traces": {
+        "tp": 31,
+        "fp": 0,
+        "fn": 70,
+        "tn": 403,
+        "precision": 1.0,
+        "recall": 0.3069306930693069,
+        "f1": 0.46969696969696967
+      },
+      "logs": {
+        "tp": 18,
+        "fp": 0,
+        "fn": 83,
+        "tn": 403,
+        "precision": 1.0,
+        "recall": 0.1782178217821782,
+        "f1": 0.3025210084033613
+      },
+      "metrics": {
+        "tp": 52,
+        "fp": 6,
+        "fn": 49,
+        "tn": 397,
+        "precision": 0.896551724137931,
+        "recall": 0.5148514851485149,
+        "f1": 0.6540880503144655
+      },
+      "traces+logs": {
+        "tp": 31,
+        "fp": 0,
+        "fn": 70,
+        "tn": 403,
+        "precision": 1.0,
+        "recall": 0.3069306930693069,
+        "f1": 0.46969696969696967
+      },
+      "traces+metrics": {
+        "tp": 76,
+        "fp": 6,
+        "fn": 25,
+        "tn": 397,
+        "precision": 0.926829268292683,
+        "recall": 0.7524752475247525,
+        "f1": 0.8306010928961749
+      },
+      "logs+metrics": {
+        "tp": 70,
+        "fp": 6,
+        "fn": 31,
+        "tn": 397,
+        "precision": 0.9210526315789473,
+        "recall": 0.693069306930693,
+        "f1": 0.7909604519774012
+      },
+      "traces+logs+metrics": {
+        "tp": 76,
+        "fp": 6,
+        "fn": 25,
+        "tn": 397,
+        "precision": 0.926829268292683,
+        "recall": 0.7524752475247525,
+        "f1": 0.8306010928961749
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.21875,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.0
+      },
+      "logs": {
+        "cpu": 0.0,
+        "memory": 0.0,
+        "latency": 0.75,
+        "error": 0.0
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9523809523809523,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 0.21875,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.0
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9523809523809523,
+        "latency": 1.0,
+        "error": 0.0
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9523809523809523,
+        "latency": 0.75,
+        "error": 0.0
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9523809523809523,
+        "latency": 1.0,
+        "error": 0.0
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "payment",
+        "windows": 10,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "checkout",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "payment",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "inventory",
+        "windows": 7,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "shipping",
+        "windows": 12,
+        "detected_windows": 0
+      },
+      {
+        "kind": "error",
+        "root": "shipping",
+        "windows": 12,
+        "detected_windows": 0
+      },
+      {
+        "kind": "memory",
+        "root": "inventory",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cache",
+        "windows": 14,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "db",
+        "windows": 5,
+        "detected_windows": 4,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cache",
+        "windows": 11,
+        "detected_windows": 11,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 29
+  },
+  {
+    "seed": 7,
+    "detection": {
+      "traces": {
+        "tp": 58,
+        "fp": 24,
+        "fn": 25,
+        "tn": 397,
+        "precision": 0.7073170731707317,
+        "recall": 0.6987951807228916,
+        "f1": 0.703030303030303
+      },
+      "logs": {
+        "tp": 32,
+        "fp": 5,
+        "fn": 51,
+        "tn": 416,
+        "precision": 0.8648648648648649,
+        "recall": 0.3855421686746988,
+        "f1": 0.5333333333333334
+      },
+      "metrics": {
+        "tp": 53,
+        "fp": 5,
+        "fn": 30,
+        "tn": 416,
+        "precision": 0.9137931034482759,
+        "recall": 0.6385542168674698,
+        "f1": 0.75177304964539
+      },
+      "traces+logs": {
+        "tp": 58,
+        "fp": 29,
+        "fn": 25,
+        "tn": 392,
+        "precision": 0.6666666666666666,
+        "recall": 0.6987951807228916,
+        "f1": 0.6823529411764706
+      },
+      "traces+metrics": {
+        "tp": 82,
+        "fp": 29,
+        "fn": 1,
+        "tn": 392,
+        "precision": 0.7387387387387387,
+        "recall": 0.9879518072289156,
+        "f1": 0.8453608247422681
+      },
+      "logs+metrics": {
+        "tp": 82,
+        "fp": 9,
+        "fn": 1,
+        "tn": 412,
+        "precision": 0.9010989010989011,
+        "recall": 0.9879518072289156,
+        "f1": 0.9425287356321839
+      },
+      "traces+logs+metrics": {
+        "tp": 82,
+        "fp": 33,
+        "fn": 1,
+        "tn": 388,
+        "precision": 0.7130434782608696,
+        "recall": 0.9879518072289156,
+        "f1": 0.8282828282828283
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 1.0,
+        "memory": 0.13793103448275862,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "logs": {
+        "cpu": 0.12,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9655172413793104,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 1.0,
+        "memory": 0.13793103448275862,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9655172413793104,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9655172413793104,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9655172413793104,
+        "latency": 1.0,
+        "error": 1.0
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "cpu",
+        "root": "shipping",
+        "windows": 11,
+        "detected_windows": 11,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "shipping",
+        "windows": 11,
+        "detected_windows": 11,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "auth",
+        "windows": 7,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "cache",
+        "windows": 8,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "payment",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cache",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "cache",
+        "windows": 10,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "cart",
+        "windows": 8,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "db",
+        "windows": 7,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "payment",
+        "windows": 10,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 34
+  },
+  {
+    "seed": 8,
+    "detection": {
+      "traces": {
+        "tp": 46,
+        "fp": 8,
+        "fn": 45,
+        "tn": 405,
+        "precision": 0.8518518518518519,
+        "recall": 0.5054945054945055,
+        "f1": 0.6344827586206897
+      },
+      "logs": {
+        "tp": 28,
+        "fp": 5,
+        "fn": 63,
+        "tn": 408,
+        "precision": 0.8484848484848485,
+        "recall": 0.3076923076923077,
+        "f1": 0.45161290322580655
+      },
+      "metrics": {
+        "tp": 60,
+        "fp": 3,
+        "fn": 31,
+        "tn": 410,
+        "precision": 0.9523809523809523,
+        "recall": 0.6593406593406593,
+        "f1": 0.7792207792207793
+      },
+      "traces+logs": {
+        "tp": 46,
+        "fp": 13,
+        "fn": 45,
+        "tn": 400,
+        "precision": 0.7796610169491526,
+        "recall": 0.5054945054945055,
+        "f1": 0.6133333333333333
+      },
+      "traces+metrics": {
+        "tp": 88,
+        "fp": 11,
+        "fn": 3,
+        "tn": 402,
+        "precision": 0.8888888888888888,
+        "recall": 0.967032967032967,
+        "f1": 0.9263157894736841
+      },
+      "logs+metrics": {
+        "tp": 88,
+        "fp": 8,
+        "fn": 3,
+        "tn": 405,
+        "precision": 0.9166666666666666,
+        "recall": 0.967032967032967,
+        "f1": 0.9411764705882353
+      },
+      "traces+logs+metrics": {
+        "tp": 88,
+        "fp": 16,
+        "fn": 3,
+        "tn": 397,
+        "precision": 0.8461538461538461,
+        "recall": 0.967032967032967,
+        "f1": 0.9025641025641026
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.43243243243243246,
+        "memory": 0.07692307692307693,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "logs": {
+        "cpu": 0.0,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.8846153846153846,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 0.43243243243243246,
+        "memory": 0.07692307692307693,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.8846153846153846,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.8846153846153846,
+        "latency": 1.0,
+        "error": 1.0
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.8846153846153846,
+        "latency": 1.0,
+        "error": 1.0
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "cart",
+        "windows": 8,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cart",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "inventory",
+        "windows": 13,
+        "detected_windows": 12,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "checkout",
+        "windows": 5,
+        "detected_windows": 4,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "checkout",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "auth",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "db",
+        "windows": 10,
+        "detected_windows": 10,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cart",
+        "windows": 14,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "checkout",
+        "windows": 7,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cache",
+        "windows": 14,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 33
+  },
+  {
+    "seed": 9,
+    "detection": {
+      "traces": {
+        "tp": 17,
+        "fp": 0,
+        "fn": 86,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.1650485436893204,
+        "f1": 0.2833333333333334
+      },
+      "logs": {
+        "tp": 18,
+        "fp": 0,
+        "fn": 85,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.17475728155339806,
+        "f1": 0.2975206611570248
+      },
+      "metrics": {
+        "tp": 64,
+        "fp": 7,
+        "fn": 39,
+        "tn": 394,
+        "precision": 0.9014084507042254,
+        "recall": 0.6213592233009708,
+        "f1": 0.735632183908046
+      },
+      "traces+logs": {
+        "tp": 23,
+        "fp": 0,
+        "fn": 80,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.22330097087378642,
+        "f1": 0.3650793650793651
+      },
+      "traces+metrics": {
+        "tp": 76,
+        "fp": 7,
+        "fn": 27,
+        "tn": 394,
+        "precision": 0.9156626506024096,
+        "recall": 0.7378640776699029,
+        "f1": 0.8172043010752688
+      },
+      "logs+metrics": {
+        "tp": 81,
+        "fp": 7,
+        "fn": 22,
+        "tn": 394,
+        "precision": 0.9204545454545454,
+        "recall": 0.7864077669902912,
+        "f1": 0.8481675392670156
+      },
+      "traces+logs+metrics": {
+        "tp": 81,
+        "fp": 7,
+        "fn": 22,
+        "tn": 394,
+        "precision": 0.9204545454545454,
+        "recall": 0.7864077669902912,
+        "f1": 0.8481675392670156
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.15625,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.03571428571428571
+      },
+      "logs": {
+        "cpu": 0.0,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.25
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9375,
+        "latency": 0.0,
+        "error": 0.07142857142857142
+      },
+      "traces+logs": {
+        "cpu": 0.15625,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.25
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9375,
+        "latency": 1.0,
+        "error": 0.10714285714285714
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9375,
+        "latency": 1.0,
+        "error": 0.2857142857142857
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9375,
+        "latency": 1.0,
+        "error": 0.2857142857142857
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "db",
+        "windows": 14,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "inventory",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "inventory",
+        "windows": 13,
+        "detected_windows": 12,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "db",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "shipping",
+        "windows": 14,
+        "detected_windows": 1,
+        "rank_score": 4,
+        "rank_walk": 5
+      },
+      {
+        "kind": "memory",
+        "root": "auth",
+        "windows": 5,
+        "detected_windows": 4,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "shipping",
+        "windows": 9,
+        "detected_windows": 9,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "auth",
+        "windows": 14,
+        "detected_windows": 7,
+        "rank_score": 1,
+        "rank_walk": 2
+      },
+      {
+        "kind": "latency",
+        "root": "catalog",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "db",
+        "windows": 8,
+        "detected_windows": 8,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 31
+  },
+  {
+    "seed": 10,
+    "detection": {
+      "traces": {
+        "tp": 59,
+        "fp": 3,
+        "fn": 44,
+        "tn": 398,
+        "precision": 0.9516129032258065,
+        "recall": 0.5728155339805825,
+        "f1": 0.7151515151515151
+      },
+      "logs": {
+        "tp": 46,
+        "fp": 5,
+        "fn": 57,
+        "tn": 396,
+        "precision": 0.9019607843137255,
+        "recall": 0.44660194174757284,
+        "f1": 0.5974025974025974
+      },
+      "metrics": {
+        "tp": 50,
+        "fp": 0,
+        "fn": 53,
+        "tn": 401,
+        "precision": 1.0,
+        "recall": 0.4854368932038835,
+        "f1": 0.6535947712418301
+      },
+      "traces+logs": {
+        "tp": 62,
+        "fp": 8,
+        "fn": 41,
+        "tn": 393,
+        "precision": 0.8857142857142857,
+        "recall": 0.6019417475728155,
+        "f1": 0.7167630057803468
+      },
+      "traces+metrics": {
+        "tp": 92,
+        "fp": 3,
+        "fn": 11,
+        "tn": 398,
+        "precision": 0.968421052631579,
+        "recall": 0.8932038834951457,
+        "f1": 0.9292929292929294
+      },
+      "logs+metrics": {
+        "tp": 95,
+        "fp": 5,
+        "fn": 8,
+        "tn": 396,
+        "precision": 0.95,
+        "recall": 0.9223300970873787,
+        "f1": 0.9359605911330049
+      },
+      "traces+logs+metrics": {
+        "tp": 95,
+        "fp": 8,
+        "fn": 8,
+        "tn": 393,
+        "precision": 0.9223300970873787,
+        "recall": 0.9223300970873787,
+        "f1": 0.9223300970873787
+      }
+    },
+    "recall_by_fault": {
+      "traces": {
+        "cpu": 0.6538461538461539,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.6086956521739131
+      },
+      "logs": {
+        "cpu": 0.038461538461538464,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.7391304347826086
+      },
+      "metrics": {
+        "cpu": 1.0,
+        "memory": 0.9230769230769231,
+        "latency": 0.0,
+        "error": 0.0
+      },
+      "traces+logs": {
+        "cpu": 0.6538461538461539,
+        "memory": 0.0,
+        "latency": 1.0,
+        "error": 0.7391304347826086
+      },
+      "traces+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9230769230769231,
+        "latency": 1.0,
+        "error": 0.6086956521739131
+      },
+      "logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9230769230769231,
+        "latency": 1.0,
+        "error": 0.7391304347826086
+      },
+      "traces+logs+metrics": {
+        "cpu": 1.0,
+        "memory": 0.9230769230769231,
+        "latency": 1.0,
+        "error": 0.7391304347826086
+      }
+    },
+    "rootcause": [
+      {
+        "kind": "memory",
+        "root": "cart",
+        "windows": 15,
+        "detected_windows": 14,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cache",
+        "windows": 13,
+        "detected_windows": 13,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cache",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "memory",
+        "root": "catalog",
+        "windows": 6,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "checkout",
+        "windows": 12,
+        "detected_windows": 6,
+        "rank_score": 1,
+        "rank_walk": 2
+      },
+      {
+        "kind": "memory",
+        "root": "checkout",
+        "windows": 5,
+        "detected_windows": 4,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "cart",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "cpu",
+        "root": "checkout",
+        "windows": 5,
+        "detected_windows": 5,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "error",
+        "root": "db",
+        "windows": 11,
+        "detected_windows": 11,
+        "rank_score": 1,
+        "rank_walk": 1
+      },
+      {
+        "kind": "latency",
+        "root": "cache",
+        "windows": 15,
+        "detected_windows": 15,
+        "rank_score": 1,
+        "rank_walk": 1
+      }
+    ],
+    "learned_edges": [
+      "auth->db",
+      "cart->cache",
+      "catalog->cache",
+      "catalog->inventory",
+      "checkout->cart",
+      "checkout->inventory",
+      "checkout->payment",
+      "checkout->shipping",
+      "frontend->auth",
+      "frontend->cart",
+      "frontend->catalog",
+      "frontend->checkout",
+      "inventory->db",
+      "payment->db"
+    ],
+    "log_templates": 35
+  }
+]
